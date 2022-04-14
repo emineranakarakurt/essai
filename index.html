@@ -4,57 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
-    <script>
-        const ws = new WebSocket("ws://xu@vm-sdc-09.icube.unistra.fr:8081");
+    <h1>Image test</h1>
+    <button id="zoom">Zoom</button>
+    <button id="dezoom">Dézoom</button>
+    
 
-        const userId = JSON.stringify({
-            header:"REQUEST_CLIENT_ID"
-        });
-        var getImg;
-        var uid;
-        var result;
-        var parsed;
-        ws.addEventListener("open", () => {
-            ws.send(userId);
-        });
-        ws.addEventListener('message',function(event){
-            parsed = JSON.parse(event.data);
-            if (parsed.clientId === undefined){
-                if (parsed.idData === undefined){
-                    result = parsed.base64File;
-                    var image = document.createElement('img');
-                    var imageSrc = 'data:image/png;base64,' + result;
-                    image.src = imageSrc;
-                    document.body.appendChild(image);
-                }
-                else {
-                    getImg = JSON.stringify({
-                        idMessage: parsed.clientId,
-                        doRescale: false,
-                        clientId: uid,
-                        header: "GET_BUFFER_IMAGE"
-                    });
-                }
-            }
-            else{
-                uid = String(parsed.clientId);
-                getImg = JSON.stringify({
-                    checksum: "0333ff8c224366dac05ba154f2c6e4d9",
-                    isLaunchOrthoRect: false,
-                    fileName: "070992.tif",
-                    overWrite: false,
-                    clientId: uid,
-                    header: "OPEN_IMAGE"
-                });
-            }
-            if (parsed.base64File === undefined){
-                ws.send(getImg);
-            }
-        });
-            
-    </script>
+    <script src="./newApp.js"></script>
 </body>
 </html>
