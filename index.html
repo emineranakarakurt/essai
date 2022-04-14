@@ -25,6 +25,10 @@
             if (parsed.clientId === undefined){
                 if (parsed.idData === undefined){
                     result = parsed.base64File;
+                    var image = document.createElement('img');
+                    var imageSrc = 'data:image/png;base64,' + result;
+                    image.src = imageSrc;
+                    document.body.appendChild(image);
                 }
                 else {
                     getImg = JSON.stringify({
