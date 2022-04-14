@@ -19,7 +19,7 @@ function afficheZoomImg(){
     /////////////////////////////////////
     //Fonctionnalité de zoom dans l'image
     ////////////////////////////////////
-    var zoomScale = 2;
+    var zoomScale = 1;
     let pos = { top: 0, left: 0, x: 0, y: 0 };
 
     const mouseDownHandler = function (e) {
@@ -52,16 +52,19 @@ function afficheZoomImg(){
     };
     divImage.addEventListener('mousedown', mouseDownHandler);
 
+    console.log('zoom actuel ', zoomScale);
     //Ecouteur d'évenements pour les boutons de zoom
     zoomBtn.addEventListener('click', function(){
         if(zoomScale < 15){
-            image.style.scale = zoomScale++;
+            zoomScale++;
+            image.style.scale = zoomScale;
             console.log(zoomScale);
         }
     });
     dezoomBtn.addEventListener('click', function(){
-        if(zoomScale > 0){
-            image.style.scale = zoomScale--;
+        if(zoomScale > 1){
+            zoomScale--;
+            image.style.scale = zoomScale;
             console.log(zoomScale);
         }
     });

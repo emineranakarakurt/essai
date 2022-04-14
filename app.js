@@ -30,7 +30,7 @@ const ws = new WebSocket("ws://xu@vm-sdc-09.icube.unistra.fr:8081");
                     /////////////////////////////////////
                     //Fonctionnalité de zoom dans l'image
                     ////////////////////////////////////
-                    var zoomScale = 2;
+                    var zoomScale = 1;
                     let pos = { top: 0, left: 0, x: 0, y: 0 };
 
                     const mouseDownHandler = function (e) {
@@ -64,6 +64,7 @@ const ws = new WebSocket("ws://xu@vm-sdc-09.icube.unistra.fr:8081");
                     divImage.addEventListener('mousedown', mouseDownHandler);
 
                     //Ecouteur d'évenements pour les boutons de zoom
+                    
                     zoomBtn.addEventListener('click', function(){
                         if(zoomScale < 15){
                             image.style.scale = zoomScale++;
