@@ -1,5 +1,5 @@
 //Lancement du serveur Websocket
-const ws = new WebSocket("ws://xu@vm-sdc-09.icube.unistra.fr:8081");
+const ws = new WebSocket("ws://xu@vm-sdc-09.icube.unistra.fr:58081");
 
 //Récupération du UserID
 const userId = JSON.stringify({
@@ -16,7 +16,6 @@ function afficheZoomImg(){
     document.body.appendChild(divImage);
     divImage.appendChild(image);
     
-    console.log(image.style);
     /////////////////////////////////////
     //Fonctionnalité de zoom dans l'image
     ////////////////////////////////////
@@ -54,7 +53,7 @@ function afficheZoomImg(){
         document.removeEventListener('mouseup', mouseUpHandler);
     };
     divImage.addEventListener('mousedown', mouseDownHandler);
-    console.log('zoom actuel ', zoomScale);
+
 
     //Ecouteur d'évenements pour les boutons de zoom
     zoomBtn.addEventListener('click', function(){
